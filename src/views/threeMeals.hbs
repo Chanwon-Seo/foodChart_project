@@ -1,0 +1,126 @@
+<html lang='ko'>
+  <head>
+    <meta charset='UTF-8' />
+    <title>식단 추가</title>
+    <link rel='stylesheet' href='/css/threeMeals.css' />
+  </head>
+  <body>
+    <!-- mainForm -->
+    <div class='top'>
+      <div class='viewHead'>
+        <div>
+          <p class='Meals morningMeals'>아침</p>
+        </div>
+        <div class='imgSize'>
+          <img src='/public/img/예제.PNG' alt='사진' />
+        </div>
+        <div>
+          <p class='Meals morningMeals'>점심</p>
+        </div>
+        <div class='imgSize'>
+          <img src='/public/img/예제.PNG' alt='사진' />
+        </div>
+        <div>
+          <p class='Meals morningMeals'>저녁</p>
+        </div>
+        <div class='imgSize'>
+          <img src='/public/img/예제.PNG' alt='사진' />
+        </div>
+      </div>
+
+      <!-- 식단추가 From -->
+      <div class='addFood'>
+        <div class='addFoodMain'>
+          <div class='addFoodTitle'>
+            <h2>식단추가</h2>
+          </div>
+          <div class='radioFood'>
+            <div>
+              <label>
+                morning :
+                <input type='radio' name='radioBox' id='morning' />
+              </label>
+            </div>
+            <div>
+              <label>
+                Lunch :
+                <input type='radio' name='radioBox' id='Lunch' />
+              </label>
+            </div>
+            <div>
+              <label>
+                Dinner :
+                <input type='radio' name='radioBox' id='dinner' />
+              </label>
+            </div>
+          </div>
+          <div>
+            <div>
+              <input type='date' id='datePicker' />
+            </div>
+            <div>
+              <input
+                class='snakenumberBox'
+                type='number'
+                value='1'
+                min='0'
+                max='10'
+                step='1'
+              />
+            </div>
+            <div>
+              <input type='text' placeholder='간식' class='snackArea' />
+            </div>
+            <div>
+              <textarea
+                placeholder='간략한 내용'
+                id='textAreaBox'
+                cols='30'
+                rows='10'
+              ></textarea>
+            </div>
+            <div>
+              <input type='file' class='file-button' />
+            </div>
+            <div>
+              <button class='btn addFoodBtn' type='submit'>추가</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 추가 수정 버튼 -->
+      <div class='mealsBtn'>
+        <div>
+          <button class='btn insert'>추가/수정</button>
+        </div>
+      </div>
+      <!-- 하단 카테고리 -->
+      <div class='mealsBtn'>
+        <div>
+          <button class='btn home'>
+            <a href='/index'>홈</a>
+          </button>
+        </div>
+        <div>
+          <button class='btn foodRecord'>
+            <a href='/threeMeals'>식단기록</a>
+          </button>
+        </div>
+        <div>
+          <button class='btn monthRecord'>월 별 식사</button>
+        </div>
+        <div>
+          <button class='btn chartRecode'>통계</button>
+        </div>
+        {{! sign In btn }}
+        <div>
+          <button type='submit' class='btn signIn'>
+            <a href='/user/loginMain'>sign In</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+  <script src='./js/script.js'></script>
+</html>

@@ -1,0 +1,76 @@
+<html lang='ko'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='stylesheet' href='/css/main.css' />
+    <title>메인 폼</title>
+  </head>
+  <body>
+    <!-- MainForm -->
+    <div class='top'>
+
+      <div class='mainArea'>
+        <div>
+          <h1 id='clock'>clock</h1>
+        </div>
+        <!-- todoList -->
+        <div class='todoList'>
+          <div class='input_Area'>
+            <input type='text' id='headtxtBox' />
+            <button class='headAddBtn'>+</button>
+          </div>
+          <!-- todoList_Area -->
+          <div class='list_Area'>
+            <div class='toDo_List'>
+              <div class='inputListBox'>
+                <input type='checkbox' class='chk' />
+                <span class='lb_Text'>할 일을 입력하세요(0~20)</span>
+                <button class='deleteBtn'>X</button>
+              </div>
+              <div class='numberBox'>
+                <button class='countBtn minusBtn'>-</button>
+                <input
+                  class='numCount'
+                  type='number'
+                  value='0'
+                  max='20'
+                  min='0'
+                />
+                <button class='countBtn plusBtn'>+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='kgBtnRecord'>
+        <div>
+          <button class='recordBtn home'>
+            <a href='/index'>홈</a>
+          </button>
+        </div>
+        <div>
+          <button class='recordBtn foodRecord'>
+            <a href='/threeMeals'>식단기록</a>
+          </button>
+        </div>
+        <div>
+          <button class='recordBtn monthRecord'>월 별 식사</button>
+        </div>
+        <div>
+          <button class='recordBtn chartRecode'>통계</button>
+        </div>
+        {{! sign In btn }}
+        <div>
+          <button type='submit' class='recordBtn signIn'>
+            <a href='/user/loginMain'>sign In</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+  <script src='/js/main.js'></script>
+  <script src='/js/todolist.js'></script>
+</html>
