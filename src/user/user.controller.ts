@@ -25,6 +25,10 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  // @Get('/reg.do')
+  // @Render('login')
+  // logina() {}
+
   // @Post('/signIn')
   // findAll() {
   //   return this.userService.findAll();

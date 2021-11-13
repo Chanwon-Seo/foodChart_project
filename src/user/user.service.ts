@@ -1,11 +1,5 @@
-import {
-  ForbiddenException,
-  HttpStatus,
-  Injectable,
-  Render,
-} from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UserRepository } from './user.repository';
 
 @Injectable()
@@ -21,9 +15,7 @@ export class UserService {
     });
     if (isExist) {
       throw new ForbiddenException({
-        statusCode: HttpStatus.FORBIDDEN,
         message: [`이미 등록된 사용자입니다.`],
-        error: 'Forbidden',
       });
     }
 
@@ -32,10 +24,6 @@ export class UserService {
     );
     return result;
   }
-
-  // findAlltest() {
-  //   return `asdf`;
-  // }
 
   // findOne(id: number) {
   //   return `This action returns a #${id} user`;
