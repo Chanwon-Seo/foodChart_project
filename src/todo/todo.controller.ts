@@ -1,14 +1,33 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Render,
+  Redirect,
+} from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
+import { Todo } from './entities/todo.entity';
 
-@Controller('todo')
+@Controller('/')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
+  @Get('/')
+  @Render('index')
+  goIndex() {}
 
-  @Post()
-  create(@Body() createTodoDto: CreateTodoDto) {
+  @Get('/index')
+  @Render('index')
+  goIndex1() {}
+
+  @Post('/index.do')
+  @Redirect('http://localhost:3000/index', 302)
+  create(@Body() createTodoDto: CreateTodoDto): Promise<void> {
     return this.todoService.create(createTodoDto);
   }
 

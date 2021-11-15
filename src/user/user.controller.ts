@@ -1,16 +1,6 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Render,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Render, Redirect } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './entities/user.entity';
 
 @Controller('user')
 export class UserController {
@@ -21,13 +11,10 @@ export class UserController {
   loginGo() {}
 
   @Post('/reg.do')
+  @Redirect('http://localhost:3000/user/login', 302)
   create(@Body() createUserDto: CreateUserDto): Promise<void> {
     return this.userService.create(createUserDto);
   }
-
-  // @Get('/reg.do')
-  // @Render('login')
-  // logina() {}
 
   // @Post('/signIn')
   // findAll() {

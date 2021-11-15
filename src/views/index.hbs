@@ -9,7 +9,6 @@
   <body>
     <!-- MainForm -->
     <div class='top'>
-
       <div class='mainArea'>
         <div>
           <h1 id='clock'>clock</h1>
@@ -17,8 +16,18 @@
         <!-- todoList -->
         <div class='todoList'>
           <div class='input_Area'>
-            <input type='text' id='headtxtBox' />
-            <button class='headAddBtn'>+</button>
+            <form action='/index.do' method='post'>
+              <input name='listData' type='text' id='headtxtBox' />
+              <input
+                name='count'
+                type='number'
+                id='headNumBox'
+                value='0'
+                min='0'
+                max='20'
+              />
+              <button class='headAddBtn'>+</button>
+            </form>
           </div>
           <!-- todoList_Area -->
           <div class='list_Area'>
@@ -69,11 +78,9 @@
       </div>
     </div>
   </body>
-  <script>
-
-  </script>
+  <script></script>
 
   <script src='http://code.jquery.com/jquery-latest.min.js'></script>
   <script src='/js/main.js'></script>
-  <script src='/js/todolist.js'></script>
+  {{! <script src='/js/todolist.js'></script> }}
 </html>

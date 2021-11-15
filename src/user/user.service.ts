@@ -17,12 +17,11 @@ export class UserService {
       throw new ForbiddenException({
         message: [`이미 등록된 사용자입니다.`],
       });
+    } else {
+      const { password, ...result } = await this.userRepository.save(
+        createUserDto,
+      );
     }
-
-    const { password, ...result } = await this.userRepository.save(
-      createUserDto,
-    );
-    return result;
   }
 
   // findOne(id: number) {
