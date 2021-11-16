@@ -9,7 +9,7 @@ $(function () {
       //  함수 호출
       addList($('#headtxtBox').val());
       //  데이터 비우기
-      $('#headtxtBox').val(''); //value값 초기화 (사용자 편의성 기능)
+      //$('#headtxtBox').val(''); //value값 초기화 (사용자 편의성 기능)
     }
   });
 

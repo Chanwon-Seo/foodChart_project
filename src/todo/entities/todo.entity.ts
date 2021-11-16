@@ -8,6 +8,6 @@ export class Todo extends BaseEntity {
   @Column()
   listData: string;
 
-  @Column()
+  @Column({ default: 0 })
   count: number;
 }
