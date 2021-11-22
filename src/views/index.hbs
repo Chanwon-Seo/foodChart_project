@@ -7,7 +7,7 @@
     <title>메인 폼</title>
   </head>
   <body>
-    <div id="asdf">{{getList}}</div>
+    
     <!-- MainForm -->
     <div class='top'>
       <div class='mainArea'>
@@ -40,15 +40,23 @@
                   min='0'
                 />
                 <button class='countBtn plusBtn'>+</button>
-                
             </div>
           </div>
+
+          <div id="list">
+            <ul>
+          {{#each data}}
+              <li>{{listData}} / {{count}} </li>
+          {{/each}}
+            </ul>
+          </div>
+
         </div>
       </div>
       <div class='kgBtnRecord'>
         <div>
           <button class='recordBtn home'>
-            <a href='/index'>홈</a>
+            <a href='/'>홈</a>
           </button>
         </div>
         <div>
@@ -71,9 +79,7 @@
       </div>
     </div>
   </body>
-  <script></script>
-
   <script src='http://code.jquery.com/jquery-latest.min.js'></script>
   <script src='/js/main.js'></script>
-  <script src='/js/todolist.js'></script>
+  {{!-- <script src='/js/todolist.js'></script> --}}
 </html>

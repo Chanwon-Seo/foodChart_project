@@ -5,9 +5,18 @@ import { AppService } from './app.service';
 import { typeORMConfig } from './configs/typeorm.config';
 import { UserModule } from './user/user.module';
 import { TodoModule } from './todo/todo.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeORMConfig), UserModule, TodoModule],
+  imports: [
+    TypeOrmModule.forRoot(typeORMConfig),
+    UserModule,
+    TodoModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'src', '/', 'views'),
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
