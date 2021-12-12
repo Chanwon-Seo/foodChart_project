@@ -5,72 +5,61 @@ import {
   Body,
   Redirect,
   Render,
-  Res,
+  Query,
+  Patch,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
+import path from 'path/posix';
+import { Todo } from './entities/todo.entity';
 
 @Controller('/')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
+  // CREATE
   @Post('/index.do')
-  @Redirect('http://localhost:3000/', 302)
-  create(@Body() createTodoDto: CreateTodoDto): Promise<void> {
+  @Redirect('/')
+  create(@Body() createTodoDto: CreateTodoDto): Promise<any> {
     return this.todoService.create(createTodoDto);
   }
 
-  // 만드셔용
-  @Get('/index')
-  @Render('index')
-  root() {
-    return `goindex`;
-  }
-
+  // AllRead
   @Get()
   @Render('index')
   async getList() {
-    const getList = await this.todoService.findAll();
-    // forEach없이도 가능 넘길 때 배열에 담아 넘김
-    // const dataArr = [];
-    // getList.forEach((data) => {
-    //   dataArr.push(data);
-    // });
-    // console.log(dataArr);
-    return { data: getList };
+    return { data: await this.todoService.findAll() };
   }
 
-  // @Get('/getTodo')
-  // @Render()
-  // root(@Res() res: Response){
-  //  return res.render(
-  //    this.todoService.findAll(),
-  //    {message : "hello world!"},
-  //  )
+  @Get('updateUpTodo')
+  @Redirect('/')
+  updateUpTodo(
+    @Query('id') todoId: number,
+    @Query('count', ParseIntPipe) count: number,
+  ): Promise<void> {
+    return this.todoService.updateUpTodo(todoId, count);
+  }
+
+  @Get('updateDownTodo')
+  @Redirect('/')
+  updateDownTodo(
+    @Query('id') todoId: number,
+    @Query('count', ParseIntPipe) count: number,
+  ): Promise<void> {
+    return this.todoService.updateDownTodo(todoId, count);
+  }
+
+  @Get('statusTodo')
+  @Redirect('/')
+  statusTodo(@Query('id') todoId: number, @Body() status: Todo): Promise<void> {
+    return this.todoService.statusTodo(todoId, status);
+  }
+
+  @Get('deleteTodo')
+  @Redirect('/')
+  deleteTodo(@Query('id') id): Promise<void> {
+    console.log(id);
+    return this.todoService.deleteTodo(id);
+  }
 }
-
-// @Get('getTodo')
-// @Render('index')
-// async findAll(): Promise<Todo[]> {
-//   const getList = await this.todoService.findAll();
-//   console.log(getList);
-//   return Object.assign({
-//     data: getList,
-//   });
-// }
-
-// @Get(':id')
-// findOne(@Param('id') id: string) {6
-//   return this.todoService.findOne(+id);
-// }
-
-// @Patch(':id')
-// update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-//   return this.todoService.update(+id, updateTodoDto);
-// }
-
-// @Delete(':id')
-// remove(@Param('id') id: string) {
-//   return this.todoService.remove(+id);
-// }
-// }

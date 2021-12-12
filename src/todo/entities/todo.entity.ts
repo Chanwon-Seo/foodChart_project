@@ -10,4 +10,7 @@ export class Todo extends BaseEntity {
 
   @Column({ default: 0 })
   count: number;
+
+  @Column({ default: false })
+  status: Boolean;
 }

@@ -9,4 +9,6 @@ export class CreateTodoDto {
   listData: string;
 
   count: number;
+
+  status: Boolean;
 }

@@ -1,57 +1,48 @@
 <html lang='ko'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='stylesheet' href='/css/main.css' />
-    <title>메인 폼</title>
-  </head>
-  <body>
-    
-    <!-- MainForm -->
-    <div class='top'>
-      <div class='mainArea'>
-        <div>
-          <h1 id='clock'>clock</h1>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <link rel='stylesheet' href='/css/main.css' />
+  <title>메인 폼</title>
+</head>
+
+<body>
+
+  <!-- MainForm -->
+  <div class='top'>
+    <div class='mainArea'>
+      <div>
+        <h1 id='clock'>clock</h1>
+      </div>
+      <!-- todoList -->
+      <div class='todoList'>
+        <div class='input_Area'>
+          <form action='/index.do' method='post'>
+            <input name='listData' type='text' id='headtxtBox' autofocus="autofocus" />
+            <button class='headAddBtn'>+</button>
+          </form>
         </div>
-        <!-- todoList -->
-        <div class='todoList'>
-          <div class='input_Area'>
-            <form action='/index.do' method='post'>
-              <input name='listData' type='text' id='headtxtBox' />
-              <button class='headAddBtn'>+</button>
-            </form>
-          </div>
-          <!-- todoList_Area -->
-          <div class='list_Area'>
-            <div class='toDo_List'>
-              <div class='inputListBox'>
-                <input type='checkbox' class='chk' />
-                <span class='lb_Text'>할 일을 입력하세요(0~20)</span>
-                <button class='deleteBtn'>X</button>
-              </div>
-              <div class='numberBox'>
-                <button class='countBtn minusBtn'>-</button>
-                <input
-                  class='numCount'
-                  type='number'
-                  value='0'
-                  max='20'
-                  min='0'
-                />
-                <button class='countBtn plusBtn'>+</button>
+        <!-- todoList_Form -->
+        <div class='list_Area'>
+          {{#each data}}
+          <div class='toDo_List'>
+            <input type='hidden' value='{{todoId}}'>
+            <div class='inputListBox'>
+              <input type='checkbox' class='chk' onclick='location.href="statusTodo?id={{TodoId}}"'/>
+              <span class='lb_Text'>{{listData}}</span>
+              <button type="button" class='deleteBtn' onclick='location.href="deleteTodo?id={{todoId}}"'>X</button>
+            </div>
+            <div class='numberBox'>
+              <button type="button" class='countBtn minusBtn' onclick='location.href="updateDownTodo?id={{todoId}}&count={{count}}"'>-</button>
+              <input class='numCount' type='number' value='{{count}}' max='20' min='0' />
+              <button type="button" class='countBtn plusBtn' onclick='location.href="updateUpTodo?id={{todoId}}&count={{count}}"'>+</button>
             </div>
           </div>
-
-          <div id="list">
-            <ul>
-          {{#each data}}
-              <li>{{listData}} / {{count}} </li>
           {{/each}}
-            </ul>
-          </div>
-
         </div>
+        <!-- todoList_end -->
       </div>
       <div class='kgBtnRecord'>
         <div>
@@ -78,8 +69,17 @@
         </div>
       </div>
     </div>
-  </body>
-  <script src='http://code.jquery.com/jquery-latest.min.js'></script>
-  <script src='/js/main.js'></script>
-  {{!-- <script src='/js/todolist.js'></script> --}}
+</body>
+<script src='http://code.jquery.com/jquery-latest.min.js'></script>
+<script src='/js/main.js'></script>
+<script type="text/javascript">
+  const dataId = document.querySelector(".deleteBtn").value;
+    function f_link(){
+        location.href = `localhost:3000?id=${dataId}`;
+        console.log(dataId);
+    }
+</script>
+
+
+<script src='/js/todolist.js'></script>
 </html>
