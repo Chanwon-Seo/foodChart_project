@@ -5,10 +5,10 @@ body {
 /* 전체 태그 */
 .top {
   background-color: #fff;
-  width: 50%;
+  /* width: 50%; */
   min-width: 500px;
   margin: auto;
-  /* margin-top: 8%; */
+  margin-top: 8%;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
   display: flex;
@@ -155,4 +155,13 @@ label {
 
 .btn:hover {
   background-color: #b3b3b386;
+}
+
+.imgList {
+  list-style-type: none;
+  display: flex;
+}
+
+.water {
+  font-size: 20px;
 }

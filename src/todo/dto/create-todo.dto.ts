@@ -10,5 +10,6 @@ export class CreateTodoDto {
 
   count: number;
 
-  status: Boolean;
+  @IsString()
+  status: number;
 }

@@ -6,23 +6,31 @@ import {
   Redirect,
   Render,
   Query,
-  Patch,
   ParseIntPipe,
+  Param,
+  ValidationPipe,
+  UsePipes,
+  ParseBoolPipe,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
-import path from 'path/posix';
-import { Todo } from './entities/todo.entity';
+import { query } from 'express';
 
 @Controller('/')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   // CREATE
-  @Post('/index.do')
-  @Redirect('/')
+  /*
+   * 1. localhost:3000/ 으로 이동
+   * 2. 생성하는 부분 CreateTodoDto의 모든 정보를 불러옴
+   * 3. service단으로 넘긴다.
+   */
+  @Post('/index.do') // Post
+  @Redirect('/') // 1
   create(@Body() createTodoDto: CreateTodoDto): Promise<any> {
-    return this.todoService.create(createTodoDto);
+    // 2
+    return this.todoService.create(createTodoDto); // 3
   }
 
   // AllRead
@@ -50,16 +58,18 @@ export class TodoController {
     return this.todoService.updateDownTodo(todoId, count);
   }
 
-  @Get('statusTodo')
-  @Redirect('/')
-  statusTodo(@Query('id') todoId: number, @Body() status: Todo): Promise<void> {
-    return this.todoService.statusTodo(todoId, status);
-  }
-
   @Get('deleteTodo')
   @Redirect('/')
   deleteTodo(@Query('id') id): Promise<void> {
-    console.log(id);
     return this.todoService.deleteTodo(id);
+  }
+
+  @Get('statusTodo')
+  @Redirect('/')
+  todoStatus(
+    @Query('id') todoId: number,
+    @Query('status') status: string,
+  ): Promise<any> {
+    return this.todoService.todoStatus(todoId, status);
   }
 }

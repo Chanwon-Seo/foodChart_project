@@ -1,0 +1,90 @@
+<html lang='ko'>
+  <head>
+    <meta charset='UTF-8' />
+    <title>식단 추가</title>
+    <link rel='stylesheet' href='/css/threeMeals.css' />
+  </head>
+  <body>
+    <!-- mainForm -->
+    <div class='top'>
+      <div class='viewHead'>
+        {{#each data}}
+        <span class='Meals morningMeals'></span>
+        <span class="water">물 섭취량 : </span>
+        <span class="waterNum">{{waterNum}}</span>
+        <ul class='imgList'>
+          <li class='imgSize'>
+            <img src='../../img/{{imgPath}}' width='300' height='160' alt='사진' />
+          </li>
+          <li>
+            <p class="water textArea">{{textData}}</p>
+          </li>
+        </ul>
+        {{/each}}
+      <!-- 식단추가 From -->
+      <div class='addFood'>
+        <div class='addFoodMain'>
+          <div class='addFoodTitle'>
+            <h2>식단추가</h2>
+          </div>
+          {{! 식사 추가 }}
+          <div>
+            <form action='/meal/meal.do' method='post'>
+              <textarea
+              placeholder="물 섭취량"
+                name='waterNum'
+                class='snakenumberBox'
+                type='number'
+                min='0'
+                max='10'
+                step='1'
+              ></textarea>
+              <div>
+              <input type='file' name="imgPath" class='file-button' />
+            </div>
+              <input
+              placeholder="간단한 내용을 작성해주세요"
+              name='textData'
+                type="text"
+                id='textAreaBox'
+              />
+              <button class='btn addFoodBtn'>추가</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- 추가 수정 버튼 -->
+      <div class='mealsBtn'>
+        <div>
+          <button class='btn insert'>추가</button>
+        </div>
+      </div>
+      <!-- 하단 카테고리 -->
+      <div class='mealsBtn'>
+        <div>
+          <button class='btn home'>
+            <a href='/'>홈</a>
+          </button>
+        </div>
+        <div>
+          <button class='btn foodRecord'>
+            <a href='/meal'>식단기록</a>
+          </button>
+        </div>
+        <div>
+          <button class='btn chartRecode'>
+            <a href='/weight.html'>체중 기록</a>
+          </button>
+        </div>
+        <div>
+          <button class='btn chartRecode'>
+            <a href='/login.html'>로그인</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+  <script src='./js/script.js'></script>
+  <script src='./js/main.js'></script>
+</html>

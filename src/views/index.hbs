@@ -28,9 +28,12 @@
         <div class='list_Area'>
           {{#each data}}
           <div class='toDo_List'>
-            <input type='hidden' value='{{todoId}}'>
             <div class='inputListBox'>
-              <input type='checkbox' class='chk' onclick='location.href="statusTodo?id={{TodoId}}"'/>
+              {{#if status}} 
+              <input type='checkbox' id="{{todoId}}" class='chk' checked="checked"/>
+              {{else}}
+              <input type='checkbox' id="{{todoId}}" class='chk'/>
+              {{/if}}             
               <span class='lb_Text'>{{listData}}</span>
               <button type="button" class='deleteBtn' onclick='location.href="deleteTodo?id={{todoId}}"'>X</button>
             </div>
@@ -52,20 +55,14 @@
         </div>
         <div>
           <button class='recordBtn foodRecord'>
-            <a href='/threeMeals'>식단기록</a>
+            <a href='/meal'>식단기록</a>
           </button>
         </div>
         <div>
-          <button class='recordBtn monthRecord'>월 별 식사</button>
+          <button class='recordBtn chartRecode'><a href="/weight.html">체중 기록</a></button>
         </div>
         <div>
-          <button class='recordBtn chartRecode'>통계</button>
-        </div>
-        {{! sign In btn }}
-        <div>
-          <button type='submit' class='recordBtn signIn'>
-            <a href='/user/login'>sign In</a>
-          </button>
+          <button class='recordBtn chartRecode'><a href="/login.html">로그인</a></button>
         </div>
       </div>
     </div>
@@ -79,7 +76,12 @@
         console.log(dataId);
     }
 </script>
-
-
 <script src='/js/todolist.js'></script>
+<script>
+$(".chk").click(function () {
+   let checkedId = $(this).attr("id");
+   let chkStatus = document.getElementById(checkedId).checked;
+  location.href=`statusTodo?id=${checkedId}&status=${chkStatus}`;
+});
+</script>
 </html>

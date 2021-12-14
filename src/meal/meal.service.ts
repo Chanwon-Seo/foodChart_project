@@ -1,19 +1,34 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateMealDto } from './dto/create-meal.dto';
 import { UpdateMealDto } from './dto/update-meal.dto';
+import { Meal } from './entities/meal.entity';
+import { MealRepository } from './meal.repository';
 
 @Injectable()
 export class MealService {
-  create(createMealDto: CreateMealDto) {
-    return 'This action adds a new meal';
+  constructor(
+    @InjectRepository(MealRepository)
+    private mealRepository: MealRepository,
+  ) {}
+
+  // create
+  async create(createMealDto: CreateMealDto): Promise<any> {
+    await this.mealRepository.save(createMealDto);
+    // return `save`;
   }
 
-  findAll() {
-    return `This action returns all meal`;
+  // AllRead
+  async findAll(): Promise<Meal[]> {
+    return await this.mealRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} meal`;
+  async findOne(id: number): Promise<any> {
+    const found = await this.mealRepository.findOne(id);
+    if (!found) {
+      throw new NotFoundException(`Can't find Meal with id ${id}`);
+    }
+    return found;
   }
 
   update(id: number, updateMealDto: UpdateMealDto) {

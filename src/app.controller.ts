@@ -4,11 +4,4 @@ import { Get, Controller, Render } from '@nestjs/common';
 @Controller()
 export class AppController {
   // constructor(private appService: AppService) {}
-
-  // threeMeals
-  @Get('/threeMeals')
-  @Render('threeMeals')
-  gothreeMeals() {
-    return { message: 'threeMeals!' };
-  }
 }

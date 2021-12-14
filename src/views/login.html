@@ -1,0 +1,97 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>식단기록</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="loginArea">
+      <div class="loginLabel">
+        <h2>로그인 페이지</h2>
+      </div>
+      <form action="/user" class="form" method="Post">
+        <div class="inputArea">
+          <div>
+            <input
+              type="text"
+              class="textBox idTextBox"
+              placeholder="아이디를 입력해주세요"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="비밀번호를 입력해주세요"
+              class="textBox pwTextBox"
+            />
+          </div>
+        </div>
+        <div class="btnArea">
+          <div><button class="btn LoginBtn">로그인</button></div>
+        </div>
+      </form>
+      <div class="btnArea">
+        <div><button class="btn ragBtn">회원가입</button></div>
+      </div>
+    </div>
+    <div class="popupArea">
+      <div class="regPopupArea">
+        <div class="regArea">
+          <h2>회원가입 페이지</h2>
+        </div>
+        <form action="/user/reg.do" class="form" method="Post">
+          <div class="inputPopArea">
+            <div>
+              <input
+                class="textBox regIdBox"
+                type="text"
+                placeholder="아이디"
+                name="userId"
+              />
+            </div>
+            <div>
+              <input
+                class="textBox regPwBox"
+                type="password"
+                placeholder="비밀번호"
+                name="password"
+              />
+            </div>
+            <div>
+              <input
+                class="textBox regPwCkBox"
+                type="password"
+                placeholder="비밀번호 확인"
+                name=""
+              />
+            </div>
+            <div>
+              <input
+                class="textBox regEmiCkBox"
+                type="email"
+                placeholder="이메일"
+                name="address"
+              />
+            </div>
+            <div>
+              <input
+                class="textBox regNameBox"
+                type="text"
+                placeholder="이름"
+                name="name"
+              />
+            </div>
+          </div>
+          <div class="btnArea">
+            <button class="btn regCtBtn">회원가입</button>
+            <button type="button" class="btn xBtn">취소</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="/js/script.js"></script>
+</html>

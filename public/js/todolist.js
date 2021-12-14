@@ -30,22 +30,22 @@ $(function () {
   // });
 
   // chk의 checkbox 변함에 따른 기능
-  $('.list_Area').on('change', '.chk', function () {
-    const chkRes = $(this).is(':checked'); // .chk기준 현재 checkbox의 정보를 boolean으로 저장
-    const findParent = $(this).parent(); // .chk의 부모를 저장 (inputListBox)
+  // $('.list_Area').on('change', '.chk', function () {
+  //   const chkRes = $(this).is(':checked'); // .chk기준 현재 checkbox의 정보를 boolean으로 저장
+  //   const findParent = $(this).parent(); // .chk의 부모를 저장 (inputListBox)
 
-    if (chkRes == true) {
-      findParent
-        .find('.lb_Text')
-        .css('text-decoration', 'line-through')
-        .css('color', 'gray');
-    } else {
-      findParent
-        .find('.lb_Text')
-        .css('text-decoration', 'none')
-        .css('color', 'black');
-    }
-  });
+  //   if (chkRes == '1') {
+  //     findParent
+  //       .find('.lb_Text')
+  //       .css('text-decoration', 'line-through')
+  //       .css('color', 'gray');
+  //   } else {
+  //     findParent
+  //       .find('.lb_Text')
+  //       .css('text-decoration', 'none')
+  //       .css('color', 'black');
+  //   }
+  // });
 
   // // 삭제
   // $('.list_Area').on('click', '.deleteBtn', function () {
