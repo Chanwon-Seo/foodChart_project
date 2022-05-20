@@ -7,14 +7,9 @@ import {
   Render,
   Query,
   ParseIntPipe,
-  Param,
-  ValidationPipe,
-  UsePipes,
-  ParseBoolPipe,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
-import { query } from 'express';
 
 @Controller('/')
 export class TodoController {

@@ -7,7 +7,7 @@ export class WeightController {
   constructor(private readonly weightService: WeightService) {}
 
   @Post('/weight.do') // Post
-  @Redirect('/welght1.html')
+  @Redirect('/welght.html')
   create(@Body() createWeightDto: CreateWeightDto): Promise<any> {
     return this.weightService.create(createWeightDto);
   }
